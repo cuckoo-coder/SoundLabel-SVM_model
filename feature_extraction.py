@@ -225,7 +225,7 @@ if __name__ == '__main__':
 
     else:
 
-        num_processors = cpu_count()
+        num_processors = min(16, cpu_count())
 
         print(
             f"🚀 Tìm thấy {total_songs} bài hát."
