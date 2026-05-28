@@ -5,18 +5,21 @@ import pandas as pd
 import gradio as gr
 import traceback
 import joblib
+import sys
+
+sys.stdout.reconfigure(encoding='utf-8')
 
 # 🔌 BƯỚC 1: TỰ ĐỘNG NẠP MÔ HÌNH AI ĐÃ LƯU (KHÔNG CẦN TRAIN LẠI)
-print("⏳ Đang nạp cấu hình AI từ file .pkl... Vui lòng đợi...")
+print("Đang nạp cấu hình AI từ file .pkl... Vui lòng đợi...")
 
 try:
     scaler = joblib.load('music_scaler.pkl')
     model_svm = joblib.load('music_svm_model.pkl')
     categories_list = joblib.load('music_categories.pkl')
-    print("✅ Nạp AI thành công! Hệ thống sẵn sàng hoạt động.")
+    print("Nạp AI thành công! Hệ thống sẵn sàng hoạt động.")
 except Exception as e:
-    print(f"❌ LỖI KHÔNG NẠP ĐƯỢC AI: {e}")
-    print("👉 Vui lòng chạy ô code lưu file .pkl bên Jupyter Notebook trước!")
+    print(f"LỖI KHÔNG NẠP ĐƯỢC AI: {e}")
+    print("Vui lòng chạy ô code lưu file .pkl bên Jupyter Notebook trước!")
     exit()
 
 #HÀM TRÍCH XUẤT ĐẶC TRƯNG VÀ DỰ ĐOÁN FILE PHÁT SINH
@@ -68,10 +71,10 @@ def predict_genre_of_file(song_path, model, scaler, categories):
 # 🚀 BƯỚC 3: HÀM ĐIỀU PHỐI GIAO DIỆN GRADIO
 def gradio_predict(audio_file):
     if audio_file is None:
-        return "❌ Vui lòng kéo thả hoặc chọn một file nhạc trước khi bấm dự đoán!"
+        return "Vui lòng kéo thả hoặc chọn một file nhạc trước khi bấm dự đoán!"
     
     try:
-        print(f"📥 Đang xử lý file nhạc phát sinh: {audio_file}")
+        print(f"Đang xử lý file nhạc phát sinh: {audio_file}")
         prediction = predict_genre_of_file(
             song_path=audio_file,
             model=model_svm,
@@ -82,8 +85,8 @@ def gradio_predict(audio_file):
         
     except Exception as e:
         error_msg = traceback.format_exc()
-        print(f"❌ Chi tiết lỗi hệ thống:\n{error_msg}")
-        return f"❌ Lỗi trích xuất đặc trưng âm thanh: {str(e)}"
+        print(f"Chi tiết lỗi hệ thống:\n{error_msg}")
+        return f"Lỗi trích xuất đặc trưng âm thanh: {str(e)}"
 
 # 🎨 BƯỚC 4: THIẾT KẾ VÀ KHỞI CHẠY GIAO DIỆN WEB
 with gr.Blocks(theme=gr.themes.Soft(), title="AI Phân Biệt Thể Loại Nhạc") as demo:
@@ -105,7 +108,7 @@ with gr.Blocks(theme=gr.themes.Soft(), title="AI Phân Biệt Thể Loại Nhạ
             
         with gr.Column():
             output_text = gr.Textbox(
-                label="🤖 Kết quả từ AI", 
+                label="Kết quả từ AI", 
                 placeholder="Kết quả dự đoán sẽ hiển thị ở đây...",
                 text_align="center"
             )
