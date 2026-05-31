@@ -1,9 +1,8 @@
 [PRD.md](https://github.com/user-attachments/files/28431925/PRD.md)[U# 📋 PRD – Product Requirements Document
-# Hệ Thống AI Phân Biệt Thể Loại Nhạc (LapTrinhAmThanh)
+# Hệ Thống AI Phân Biệt Thể Loại Nhạc 
 
 > **Phiên bản:** 1.0  
 > **Ngày cập nhật:** 29/05/2026  
-> **Tác giả:** Nhóm LapTrinhAmThanh  
 > **Trạng thái:** Released
 
 ---
@@ -12,7 +11,7 @@
 
 ### 1.1 Mô Tả
 
-**LapTrinhAmThanh** là hệ thống phân loại thể loại âm nhạc tự động sử dụng Machine Learning. Hệ thống nhận đầu vào là một file âm thanh (`.wav`, `.mp3`,...), phân tích các đặc trưng âm học và đưa ra dự đoán thể loại nhạc tương ứng trong số 10 thể loại được hỗ trợ.
+**SoundLabel** là hệ thống phân loại thể loại âm nhạc tự động sử dụng Machine Learning. Hệ thống nhận đầu vào là một file âm thanh (`.wav`, `.mp3`,...), phân tích các đặc trưng âm học và đưa ra dự đoán thể loại nhạc tương ứng trong số 10 thể loại được hỗ trợ.
 
 Ứng dụng được xây dựng bằng Python, sử dụng mô hình **SVM (Support Vector Machine)** được huấn luyện trên bộ dữ liệu **GTZAN**, kết hợp thư viện **Librosa** để trích xuất đặc trưng âm thanh và **Gradio** để tạo giao diện web.
 
@@ -253,12 +252,12 @@ categories_list[pred_code].upper()
 
 ---
 
-*PRD này được tạo dựa trên phân tích mã nguồn thực tế của project LapTrinhAmThanh.*
+*PRD này được tạo dựa trên phân tích mã nguồn thực tế của project SoundLabel.*
 ploading PRD.md…]()
 
 [Wiki_README.md](https://github.com/user-attachments/files/28431909/Wiki_README.md)
 # 📖 WIKI – Tài Liệu Hướng Dẫn Đầy Đủ
-# LapTrinhAmThanh – AI Phân Biệt Thể Loại Nhạc
+# SoundLabel – AI Phân Biệt Thể Loại Nhạc
 
 > **Phiên bản:** 1.0 | **Cập nhật:** 29/05/2026
 
@@ -283,7 +282,7 @@ ploading PRD.md…]()
 
 ## 1. Giới Thiệu Dự Án
 
-**LapTrinhAmThanh** là hệ thống phân loại thể loại âm nhạc tự động sử dụng Machine Learning, được xây dựng bằng Python.
+**SoundLabel** là hệ thống phân loại thể loại âm nhạc tự động sử dụng Machine Learning, được xây dựng bằng Python.
 
 ### Tính năng chính
 
@@ -331,7 +330,7 @@ ploading PRD.md…]()
 ### Bước 1: Clone hoặc mở project
 
 ```bash
-cd ~/Desktop/LTAT/LapTrinhAmThanh
+cd ~/Desktop/LTAT/SoundLabel
 ```
 
 ### Bước 2: Tạo virtual environment
@@ -394,7 +393,7 @@ FLUSH PRIVILEGES;
 ## 4. Cấu Trúc Thư Mục
 
 ```
-LapTrinhAmThanh/
+SoundLabel/
 │
 ├── .venv/                              # Virtual environment (không commit)
 │
@@ -925,7 +924,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 [Design_Architecture.md](https://github.com/user-attachments/files/28431912/Design_Architecture.md)
 # 🎨 Design & Architecture Document
-# Hệ Thống AI Phân Biệt Thể Loại Nhạc – LapTrinhAmThanh
+# Hệ Thống AI Phân Biệt Thể Loại Nhạc – SoundLabel
 
 > **Phiên bản:** 1.0  
 > **Ngày cập nhật:** 29/05/2026  
@@ -1245,7 +1244,7 @@ Raw Features → reindex → StandardScaler.transform() → SVM.predict()
 ## 6. Cấu Trúc File Dự Án
 
 ```
-LapTrinhAmThanh/
+SoundLabel/
 │
 ├── genres_original/          # Dataset train (GTZAN)
 │   ├── blues/                # 100 file blues.00000.wav → blues.00099.wav
